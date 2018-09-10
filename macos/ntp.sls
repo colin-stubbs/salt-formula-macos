@@ -2,4 +2,19 @@
 
 {# configure MacOS NTP & time sync features #}
 
+ntp-restrict:
+  file.managed:
+    - name: /private/etc/ntp-restrict.conf
+    - source: salt://macos/files/private/etc/ntp-restrict.conf
+    - template: jinja
+    - user: root
+    - group: wheel
+    - mode: 0644
+
+restart-timed:
+  cmd.run:
+    - name: 'launchctl stop com.apple.timed && sleep 2 && launchctl start com.apple.timed'
+    - onchanges:
+      - file: ntp-restrict
+
 {# EOF #}
