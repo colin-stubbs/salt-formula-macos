@@ -8,7 +8,7 @@
 {% for domain, domain_keys in macos_settings.defaults.delete.items() %}
 {% for key in domain_keys %}
 {{ domain }}-{{ key }}:
-  mac_defaults.absent:
+  macdefaults.absent:
     - name: {{ key }}
     - domain: {{ domain }}
     {# TODO - add unless/onlyif checks because mac_defaults module/state doesn't do it already ? #}
@@ -21,7 +21,7 @@
 {% for key, value_config in domain_keys.items() %}
 {% if 'value' in value_config and 'type' in value_config %}
 {{ domain }}-{{ key }}:
-  mac_defaults.write:
+  macdefaults.write:
     - name: {{ key }}
     - domain: {{ domain }}
     - value: {{ value_config.value }}
