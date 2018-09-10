@@ -1,0 +1,18 @@
+{% import_yaml 'macos/defaults.yaml' as default_settings %}
+
+{% set kernel_map = salt['grains.filter_by']({
+  'default': {
+    'locations': {
+    },
+  },
+}, grain='macos', default='default', merge=salt['pillar.get']('macos:lookup', {}))
+%}
+
+{% do default_settings.macos.lookup.update(kernel_map) %}
+
+{% set macos_settings = salt['pillar.get'](
+    'macos',
+    default=default_settings.macos,
+    merge=True
+  )
+%}
