@@ -2,8 +2,9 @@
 
 {# configure MacOS logging & auditing features #}
 
-{# 3.1.1 Retain system.log for 90 or more days #}
-{# 3.1.2 Retain appfirewall.log for 90 or more days #}
+{# CIS 3.1.1 Retain system.log for 90 or more days #}
+
+{# CIS 3.1.2 Retain appfirewall.log for 90 or more days #}
 /private/etc/asl.conf:
   file.managed:
     - source: salt://macos/files/private/etc/asl.conf

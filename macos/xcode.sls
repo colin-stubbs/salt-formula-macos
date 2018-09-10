@@ -8,7 +8,7 @@ xcode-install-headless-trigger:
     - unless:
       - xcode-select -p | grep -i '/Library/Developer/CommandLineTools'
 
- xcode-install:
+xcode-install:
   cmd.run:
     - name: softwareupdate -i "`softwareupdate -l | grep '\*.*Command Line' | head -n 1 | awk -F'*' '{print $2}' | sed -e 's/^ *//' | tr -d '\n'`" --verbose
     - require:

@@ -11,6 +11,8 @@ ntp-restrict:
     - group: wheel
     - mode: 0644
 
+{# TODO: systemsetup -setnetworktimeserver SERVER/S #}
+
 restart-timed:
   cmd.run:
     - name: 'launchctl stop com.apple.timed && sleep 2 && launchctl start com.apple.timed'

@@ -2,7 +2,7 @@
 
 {# configure firewall #}
 
-{# 2.6.4 Enable Firewall Stealth Mode #}
+{# CIS 2.6.4 Enable Firewall Stealth Mode #}
 firewall-stealth-mode:
   cmd.run:
     - name: /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
