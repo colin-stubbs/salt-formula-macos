@@ -2,6 +2,7 @@
 
 include:
   - macos.bluetooth
+  - macos.defaults
   - macos.firewall
   - macos.gatekeeper
   - macos.guest
