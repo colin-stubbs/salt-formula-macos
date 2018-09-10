@@ -6,4 +6,8 @@ disable-wake-on-lan:
   cmd.run:
     - name: 'pmset -a womp 0'
 
+standby-delay:
+  cmd.run:
+    - name: 'pmset -a standbydelay 900'
+
 {# EOF #}

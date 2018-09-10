@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>policyCategoryAuthentication</key>
+	<array>
+		<dict>
+			<key>policyContent</key>
+			<string>(policyAttributeFailedAuthentications &lt; policyAttributeMaximumFailedAuthentications) OR (policyAttributeCurrentTime &gt; (policyAttributeLastFailedAuthenticationTime + autoEnableInSeconds))</string>
+			<key>policyIdentifier</key>
+			<string>Authentication Lockout</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>autoEnableInSeconds</key>
+				<integer>900</integer>
+				<key>policyAttributeMaximumFailedAuthentications</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
+	</array>
+	<key>policyCategoryPasswordChange</key>
+	<array>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributeCurrentTime &gt; policyAttributeLastPasswordChangeTime + (policyAttributeExpiresEveryNDays * 24 * 60 * 60)</string>
+			<key>policyIdentifier</key>
+			<string>Change every $PW_EXPIRE days</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>policyAttributeExpiresEveryNDays</key>
+				<integer>90</integer>
+			</dict>
+		</dict>
+	</array>
+	<key>policyCategoryPasswordContent</key>
+	<array>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributePassword matches '.{$MIN_LENGTH,}+'</string>
+			<key>policyIdentifier</key>
+			<string>Has at least $MIN_LENGTH characters</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>minimumLength</key>
+				<integer>16</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributePassword matches '(.*[0-9].*){$MIN_NUMERIC,}+'</string>
+			<key>policyIdentifier</key>
+			<string>Has a number</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>minimumNumericCharacters</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributePassword matches '(.*[a-z].*){$MIN_ALPHA_LOWER,}+'</string>
+			<key>policyIdentifier</key>
+			<string>Has a lower case letter</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>minimumAlphaCharactersLowerCase</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributePassword matches '(.*[A-Z].*){$MIN_UPPER_ALPHA,}+'</string>
+			<key>policyIdentifier</key>
+			<string>Has an upper case letter</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>minimumAlphaCharacters</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>policyContent</key>
+			<string>policyAttributePassword matches '(.*[^a-zA-Z0-9].*){$MIN_SPECIAL_CHAR,}+'</string>
+			<key>policyIdentifier</key>
+			<string>Has a special character</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>minimumSymbols</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>policyContent</key>
+			<string>none policyAttributePasswordHashes in policyAttributePasswordHistory</string>
+			<key>policyIdentifier</key>
+			<string>Does not match any of last $PW_HISTORY passwords</string>
+			<key>policyParameters</key>
+			<dict>
+				<key>policyAttributePasswordHistoryDepth</key>
+				<integer>16</integer>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
