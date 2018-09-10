@@ -1,0 +1,3 @@
+# install messages get saved only in /var/log/install.log
+? [= Facility install] claim only
+* file /var/log/install.log format=bsd mode=0640 rotate=utc compress file_max=5M ttl=365
