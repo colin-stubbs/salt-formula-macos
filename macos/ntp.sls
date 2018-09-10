@@ -2,6 +2,8 @@
 
 {# configure MacOS NTP & time sync features #}
 
+{# no longer required on high sierra,
+
 ntp-restrict:
   file.managed:
     - name: /private/etc/ntp-restrict.conf
@@ -10,6 +12,7 @@ ntp-restrict:
     - user: root
     - group: wheel
     - mode: 0644
+ #}
 
 {# TODO: systemsetup -setnetworktimeserver SERVER/S #}
 

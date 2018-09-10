@@ -2,7 +2,7 @@
 
 {# configure MacOS Power Management Policy #}
 
-restart-timed:
+disable-wake-on-lan:
   cmd.run:
     - name: 'pmset -a womp 0'
 

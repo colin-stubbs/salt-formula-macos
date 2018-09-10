@@ -2,12 +2,9 @@
 
 include:
   - macos.bluetooth
-  - macos.defaults
   - macos.firewall
   - macos.gatekeeper
   - macos.guest
-  - macos.launchctl
-  - macos.logging
   - macos.nfs
   - macos.ntp
   - macos.pwpolicy

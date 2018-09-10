@@ -2,6 +2,8 @@
 
 {# configure screensaver #}
 
+{# no longer required on high sierra,
+
 /private/etc/pam.d/screensaver:
   file.managed:
     - source: salt://macos/files/private/etc/pam.d/screensaver
@@ -9,5 +11,7 @@
     - user: root
     - group: wheel
     - mode: 0644
+
+#}
 
 {# EOF #}
